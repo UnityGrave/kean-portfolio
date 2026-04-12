@@ -4,60 +4,74 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
-import {
-  Home,
-  Code2,
-  Briefcase,
-  FileText,
-  Mail,
-  Menu,
-  X,
-} from "lucide-react";
+import { Home, Code2, Briefcase, FolderOpen, FileText, Mail, Menu, X } from "lucide-react";
 import MusicWidget from "./music-widget";
 
 const navItems = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/skills", label: "Skills", icon: Code2 },
+  { href: "/",           label: "Home",       icon: Home },
+  { href: "/skills",     label: "Skills",     icon: Code2 },
   { href: "/experience", label: "Experience", icon: Briefcase },
-  { href: "/projects", label: "Projects", icon: Code2 },
-  { href: "/resume", label: "Resume", icon: FileText },
-  { href: "/contact", label: "Contact", icon: Mail },
+  { href: "/projects",   label: "Projects",   icon: FolderOpen },
+  { href: "/resume",     label: "Resume",     icon: FileText },
+  { href: "/contact",    label: "Contact",    icon: Mail },
 ];
 
 export default function SideNav() {
-  const pathname = usePathname();
-  const [expanded, setExpanded] = useState(false);
+  const pathname  = usePathname();
+  const [hovered,    setHovered]    = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [imgError, setImgError] = useState(false);
+  const [imgError,   setImgError]   = useState(false);
+
+  const open = hovered || mobileOpen;
 
   return (
     <>
+      {/* ── Mobile hamburger ─────────────────────────────── */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
         className="fixed top-4 left-4 z-50 md:hidden p-2 bg-card rounded-xl text-accent-orange hover:bg-muted transition-colors"
         aria-label="Toggle menu"
       >
-        {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        {mobileOpen ? <X size={22} /> : <Menu size={22} />}
       </button>
 
+      {/* ── Mobile backdrop ───────────────────────────────── */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          className="fixed inset-0 bg-black/60 z-40 md:hidden"
           onClick={() => setMobileOpen(false)}
         />
       )}
 
-      <aside
-        className={`fixed left-0 top-0 h-screen bg-card border-r border-border z-40 transition-all duration-300 flex flex-col ${
-          expanded || mobileOpen ? "w-60" : "w-16"
-        } md:w-60 md:translate-x-0 ${
-          mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+      {/* ── Hover trigger strip (desktop only) ───────────── */}
+      {/* Invisible-wide zone so hover activates before cursor hits screen edge */}
+      <div
+        className="hidden md:block fixed left-0 top-0 h-screen w-4 z-50"
+        onMouseEnter={() => setHovered(true)}
+      />
+
+      {/* ── Thin accent line peek (desktop) ──────────────── */}
+      <div
+        className={`hidden md:block fixed left-0 top-0 h-screen w-0.5 bg-accent-orange/60 z-40 transition-opacity duration-300 ${
+          hovered ? "opacity-0" : "opacity-100"
         }`}
-        onMouseEnter={() => setExpanded(true)}
-        onMouseLeave={() => setExpanded(false)}
+      />
+
+      {/* ── Sidebar ──────────────────────────────────────── */}
+      <aside
+        className={`
+          fixed left-0 top-0 h-screen w-64 bg-card border-r border-border z-40
+          flex flex-col
+          transition-transform duration-300 ease-in-out
+          ${open ? "translate-x-0 shadow-2xl" : "-translate-x-full"}
+          md:translate-x-0
+          ${hovered ? "md:translate-x-0 md:shadow-2xl" : "md:-translate-x-full"}
+        `}
+        onMouseLeave={() => setHovered(false)}
       >
-        <div className="p-4 border-b border-border flex items-center justify-center">
-          <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-accent-orange/40">
+        {/* Avatar + name */}
+        <div className="p-5 border-b border-border flex items-center gap-3">
+          <div className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-accent-orange/50">
             {!imgError ? (
               <Image
                 src="/images/profile.jpg"
@@ -68,49 +82,42 @@ export default function SideNav() {
                 priority
               />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-accent-orange to-accent-blue flex items-center justify-center font-poppins font-bold text-lg text-white">
+              <div className="w-full h-full bg-gradient-to-br from-accent-orange to-accent-blue flex items-center justify-center font-poppins font-bold text-base text-white">
                 KG
               </div>
             )}
           </div>
-          {(expanded || mobileOpen) && (
-            <span className="ml-3 font-poppins font-bold text-accent-orange hidden sm:inline">
-              Kean
-            </span>
-          )}
+          <div className="overflow-hidden">
+            <p className="font-poppins font-bold text-foreground text-sm truncate">Kean Genota</p>
+            <p className="text-xs text-muted-foreground truncate">IT Intern · DLSU</p>
+          </div>
         </div>
 
-        <nav className="flex-1 py-8 px-3 space-y-2 overflow-y-auto">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = pathname === item.href;
-
+        {/* Nav items */}
+        <nav className="flex-1 py-6 px-3 flex flex-col gap-1 overflow-y-auto">
+          {navItems.map(({ href, label, icon: Icon }) => {
+            const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
             return (
               <Link
-                key={item.href}
-                href={item.href}
+                key={href}
+                href={href}
                 onClick={() => setMobileOpen(false)}
-                className={`flex items-center gap-4 px-3 py-2 rounded-xl transition-all ${
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all text-sm font-poppins font-medium ${
                   isActive
-                    ? "bg-accent-orange text-white"
+                    ? "bg-accent-orange text-white shadow-md"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground"
                 }`}
               >
-                <Icon size={20} className="flex-shrink-0" />
-                <span
-                  className={`font-poppins text-sm font-medium transition-opacity duration-300 ${
-                    expanded || mobileOpen ? "opacity-100" : "opacity-0 hidden sm:inline md:opacity-0"
-                  }`}
-                >
-                  {item.label}
-                </span>
+                <Icon size={18} className="flex-shrink-0" />
+                {label}
               </Link>
             );
           })}
         </nav>
 
+        {/* Music widget */}
         <div className="p-3 border-t border-border">
-          <MusicWidget expanded={expanded || mobileOpen} />
+          <MusicWidget expanded={true} />
         </div>
       </aside>
     </>

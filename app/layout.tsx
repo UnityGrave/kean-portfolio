@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className="bg-background text-foreground">
         <div className="flex">
           <SideNav />
-          <main className="flex-1 ml-16 md:ml-60 min-h-screen">
+          <main className="flex-1 min-h-screen">
             {children}
           </main>
         </div>
