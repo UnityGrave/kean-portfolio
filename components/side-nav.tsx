@@ -17,16 +17,14 @@ const navItems = [
 ];
 
 export default function SideNav() {
-  const pathname  = usePathname();
+  const pathname    = usePathname();
   const [hovered,    setHovered]    = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [imgError,   setImgError]   = useState(false);
 
-  const open = hovered || mobileOpen;
-
   return (
     <>
-      {/* ── Mobile hamburger ─────────────────────────────── */}
+      {/* Mobile hamburger */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
         className="fixed top-4 left-4 z-50 md:hidden p-2 bg-card rounded-xl text-accent-orange hover:bg-muted transition-colors"
@@ -35,7 +33,7 @@ export default function SideNav() {
         {mobileOpen ? <X size={22} /> : <Menu size={22} />}
       </button>
 
-      {/* ── Mobile backdrop ───────────────────────────────── */}
+      {/* Mobile backdrop */}
       {mobileOpen && (
         <div
           className="fixed inset-0 bg-black/60 z-40 md:hidden"
@@ -43,30 +41,26 @@ export default function SideNav() {
         />
       )}
 
-      {/* ── Hover trigger strip (desktop only) ───────────── */}
-      {/* Invisible-wide zone so hover activates before cursor hits screen edge */}
+      {/* Desktop hover trigger zone — always present, sits at left edge */}
       <div
-        className="hidden md:block fixed left-0 top-0 h-screen w-4 z-50"
+        className="hidden md:block fixed left-0 top-0 h-screen w-5 z-50"
         onMouseEnter={() => setHovered(true)}
       />
 
-      {/* ── Thin accent line peek (desktop) ──────────────── */}
+      {/* Thin accent peek line when collapsed */}
       <div
-        className={`hidden md:block fixed left-0 top-0 h-screen w-0.5 bg-accent-orange/60 z-40 transition-opacity duration-300 ${
-          hovered ? "opacity-0" : "opacity-100"
-        }`}
+        className="hidden md:block fixed left-0 top-0 h-screen w-0.5 z-30 bg-accent-orange/50 transition-opacity duration-300"
+        style={{ opacity: hovered ? 0 : 1 }}
       />
 
-      {/* ── Sidebar ──────────────────────────────────────── */}
+      {/* Sidebar — inline style handles transform so Tailwind doesn't conflict */}
       <aside
-        className={`
-          fixed left-0 top-0 h-screen w-64 bg-card border-r border-border z-40
-          flex flex-col
-          transition-transform duration-300 ease-in-out
-          ${open ? "translate-x-0 shadow-2xl" : "-translate-x-full"}
-          md:translate-x-0
-          ${hovered ? "md:translate-x-0 md:shadow-2xl" : "md:-translate-x-full"}
-        `}
+        className="fixed left-0 top-0 h-screen w-64 bg-card border-r border-border z-40 flex flex-col shadow-2xl"
+        style={{
+          transform: hovered || mobileOpen ? "translateX(0)" : "translateX(-100%)",
+          transition: "transform 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+          // On mobile, mobileOpen controls visibility; on desktop, hovered does
+        }}
         onMouseLeave={() => setHovered(false)}
       >
         {/* Avatar + name */}
@@ -102,7 +96,7 @@ export default function SideNav() {
                 key={href}
                 href={href}
                 onClick={() => setMobileOpen(false)}
-                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all text-sm font-poppins font-medium ${
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-colors text-sm font-poppins font-medium ${
                   isActive
                     ? "bg-accent-orange text-white shadow-md"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground"
