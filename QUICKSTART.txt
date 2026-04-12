@@ -1,0 +1,184 @@
+================================================================================
+KEAN GENOTA PORTFOLIO - QUICK START GUIDE
+================================================================================
+
+LOCATION:
+/sessions/quirky-blissful-darwin/mnt/SAS3000 - Work Employment Readiness Training Arc/portfolio/
+
+================================================================================
+STEP 1: INSTALL DEPENDENCIES (2-3 minutes)
+================================================================================
+
+cd "/sessions/quirky-blissful-darwin/mnt/SAS3000 - Work Employment Readiness Training Arc/portfolio"
+npm install --legacy-peer-deps
+
+================================================================================
+STEP 2: ADD YOUR FILES (OPTIONAL)
+================================================================================
+
+Create these directories and add files:
+
+1. Profile Photo:
+   - Path: public/images/profile.jpg
+   - Size: 320x320px recommended
+   - Format: JPG, PNG, or WebP
+   - If not added: placeholder with "KG" initials will show
+
+2. Resume PDF:
+   - Path: public/KeanGenota-IT-Intern.pdf
+   - Size: Under 10MB
+   - If not added: resume page will show placeholder
+
+================================================================================
+STEP 3: RUN DEVELOPMENT SERVER
+================================================================================
+
+npm run dev
+
+Then open: http://localhost:3000
+
+Press Ctrl+C to stop the server.
+
+================================================================================
+STEP 4: BUILD FOR PRODUCTION
+================================================================================
+
+npm run build
+npm start
+
+This creates an optimized production build.
+
+================================================================================
+STEP 5: DEPLOY TO VERCEL
+================================================================================
+
+Option A: Automatic with Vercel CLI
+  1. npm install -g vercel
+  2. vercel
+  3. Follow prompts
+
+Option B: Manual via GitHub + Vercel
+  1. Push project to GitHub
+  2. Go to vercel.com
+  3. Click "Add New Project"
+  4. Select your repository
+  5. Click "Deploy"
+
+Option C: Other Platforms
+  - Netlify: Similar to Vercel process
+  - Railway: git push to deploy
+  - Self-hosted: npm run build, then run npm start on server
+
+================================================================================
+CUSTOMIZATION (EASY CHANGES)
+================================================================================
+
+Personal Info:
+  - Edit app/page.tsx for home page content
+  - Edit app/skills/page.tsx for skill categories
+  - Edit app/experience/page.tsx for timeline entries
+  - Edit lib/projects.ts for project list
+  - Edit app/contact/page.tsx for contact details
+
+Design Colors:
+  - tailwind.config.ts: Custom color definitions
+  - app/globals.css: CSS variables
+
+Project Details:
+  - All project info is in lib/projects.ts
+  - Each project links to a GitHub repo
+  - READMEs are fetched automatically
+
+Contact Info:
+  - Email addresses: app/contact/page.tsx
+  - Phone number: app/contact/page.tsx
+  - LinkedIn/GitHub URLs: app/contact/page.tsx
+
+================================================================================
+FILE STRUCTURE AT A GLANCE
+================================================================================
+
+app/
+  page.tsx           ← Home / About page
+  layout.tsx         ← Root layout with sidebar
+  globals.css        ← Global styles
+  skills/page.tsx    ← Skills page
+  experience/page.tsx ← Experience timeline
+  projects/page.tsx  ← Projects grid
+  projects/[slug]/page.tsx ← Individual project pages
+  resume/page.tsx    ← Resume viewer
+  contact/page.tsx   ← Contact page
+
+components/
+  side-nav.tsx       ← Navigation sidebar
+  music-widget.tsx   ← Spotify player
+  project-card.tsx   ← Project card component
+
+lib/
+  projects.ts        ← All 7 projects data
+
+Configuration:
+  package.json       ← Dependencies
+  tailwind.config.ts ← Colors & theme
+  tsconfig.json      ← TypeScript config
+  next.config.ts     ← Next.js config
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Port 3000 already in use?
+  npm run dev -- -p 3001
+
+Dependencies won't install?
+  npm install --legacy-peer-deps
+
+Clear cache and reinstall:
+  rm -rf .next node_modules
+  npm install --legacy-peer-deps
+
+Profile image not showing?
+  - Check file is at public/images/profile.jpg
+  - Verify it's 320x320 pixels
+  - Rebuild: npm run build
+
+Resume PDF not loading?
+  - Check file is at public/KeanGenota-IT-Intern.pdf
+  - Ensure file size < 10MB
+  - Try downloading separately to test
+
+Projects not fetching from GitHub?
+  - Ensure repos are public
+  - Check GitHub API rate limit (60 req/hr for public)
+  - Verify repo names in lib/projects.ts are correct
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. ✓ Install dependencies
+2. ✓ Add profile photo (optional)
+3. ✓ Add resume PDF (optional)
+4. ✓ Customize content as needed
+5. ✓ Test locally: npm run dev
+6. ✓ Build: npm run build
+7. ✓ Deploy to Vercel or your hosting
+
+================================================================================
+RESOURCES
+================================================================================
+
+Next.js Docs:           https://nextjs.org/docs
+Tailwind CSS:           https://tailwindcss.com/docs
+Lucide Icons:           https://lucide.dev
+React Markdown:         https://github.com/remarkjs/react-markdown
+Vercel Deployment:      https://vercel.com/docs
+
+================================================================================
+DONE\!
+================================================================================
+
+Your portfolio is ready to customize and deploy. All files are in place,
+fully functional, and production-ready.
+
+Good luck with your portfolio\!

@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lora:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #141413;
+  --foreground: #faf9f5;
+  --card: #1c1b1a;
+  --card-foreground: #faf9f5;
+  --border: #2a2927;
+  --muted: #242321;
+  --muted-foreground: #b0aea5;
+  --accent-orange: #d97757;
+  --accent-blue: #6a9bcc;
+  --accent-green: #788c5d;
+  --radius: 0.75rem;
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground font-lora;
+  color: var(--foreground);
+  background-color: var(--background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-poppins font-bold;
+}
+
+a {
+  @apply transition-colors;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle, rgba(217, 119, 87, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-orange);
+}

@@ -1,0 +1,32 @@
+{
+  "name": "kean-genota-portfolio",
+  "version": "1.0.0",
+  "description": "Career e-portfolio for Kean Angelo L. Genota",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next": "^14.0.0",
+    "typescript": "^5.3.0",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "lucide-react": "^0.263.1",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0",
+    "next-themes": "^0.2.1",
+    "clsx": "^2.0.0",
+    "class-variance-authority": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0"
+  }
+}

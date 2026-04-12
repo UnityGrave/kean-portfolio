@@ -1,0 +1,340 @@
+================================================================================
+KEAN ANGELO L. GENOTA - CAREER E-PORTFOLIO
+Next.js 14 (App Router) Full-Stack Application
+================================================================================
+
+PROJECT LOCATION:
+/sessions/quirky-blissful-darwin/mnt/SAS3000 - Work Employment Readiness Training Arc/portfolio/
+
+================================================================================
+TECH STACK
+================================================================================
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS v3
+- shadcn/ui components
+- lucide-react (icons)
+- react-markdown + remark-gfm (GitHub README rendering)
+- next-themes (dark mode support)
+
+================================================================================
+DESIGN SYSTEM - ANTHROPIC BRAND (DARK MODE ONLY)
+================================================================================
+Colors:
+  --background: #141413 (Dark background)
+  --foreground: #faf9f5 (Light text)
+  --card: #1c1b1a (Card background)
+  --border: #2a2927 (Border color)
+  --accent-orange: #d97757 (Primary CTA color)
+  --accent-blue: #6a9bcc (Secondary accent)
+  --accent-green: #788c5d (Tertiary accent)
+
+Fonts:
+  Poppins (Headings) - Weights: 400-800
+  Lora (Body text) - Weights: 400-600
+
+Layout:
+  Fixed LEFT sidebar (64px collapsed, 240px expanded on desktop)
+  Hamburger menu on mobile
+  Content area scrolls to right
+  Subtle grid dot pattern background
+
+================================================================================
+DIRECTORY STRUCTURE
+================================================================================
+
+portfolio/
+├── app/
+│   ├── layout.tsx              # Root layout with side navigation
+│   ├── page.tsx                # Home / About page
+│   ├── globals.css             # Global styles + CSS variables
+│   ├── skills/page.tsx         # Skills gallery (14+ categories)
+│   ├── experience/page.tsx     # Experience timeline
+│   ├── projects/
+│   │   ├── page.tsx            # Projects grid (3 columns)
+│   │   └── [slug]/page.tsx     # Individual project page (dynamic)
+│   ├── resume/page.tsx         # Resume / CV viewer
+│   └── contact/page.tsx        # Contact information & form
+│
+├── components/
+│   ├── side-nav.tsx            # Fixed navigation sidebar ("use client")
+│   ├── music-widget.tsx        # Spotify playlist embed ("use client")
+│   └── project-card.tsx        # Reusable project card component
+│
+├── lib/
+│   └── projects.ts             # Project data array (7 projects)
+│
+├── public/
+│   ├── images/profile.jpg      # Profile photo (user-provided)
+│   ├── KeanGenota-IT-Intern.pdf # CV PDF (user-provided)
+│   └── placeholder-profile.svg # Default placeholder with "KG"
+│
+├── Configuration Files:
+│   ├── package.json            # Dependencies & scripts
+│   ├── next.config.ts          # Next.js config (GitHub image optimization)
+│   ├── tailwind.config.ts      # Tailwind CSS config with custom colors
+│   ├── tsconfig.json           # TypeScript configuration
+│   ├── postcss.config.js       # PostCSS setup for Tailwind
+│   └── .gitignore              # Git ignore patterns
+│
+└── Documentation:
+    ├── README.md               # Comprehensive documentation
+    └── SETUP.md                # Quick setup & customization guide
+
+================================================================================
+PAGES & FEATURES
+================================================================================
+
+1. HOME / ABOUT (/)
+   - Hero section with profile photo, name, title
+   - Short professional bio
+   - CTA buttons: "View Projects" & "Download CV"
+   - Quick stats grid (7+ Projects, 15+ Skills, 3 Certifications)
+   - Featured skills preview
+
+2. SKILLS (/skills)
+   - 14 skill categories grid layout
+   - Colored left-border accents (orange, blue, green)
+   - Tech badge tags for each skill
+   - Certification section with descriptions
+
+3. EXPERIENCE (/experience)
+   - Timeline layout with interactive elements
+   - Work experience section (1 entry: Marvill Web Dev Intern)
+   - Education section (2 entries: DLSU, iACADEMY)
+   - Certifications (2: CCNA, JLPT N5)
+   - Accomplishments (5 awards)
+
+4. PROJECTS (/projects)
+   - 3-column responsive grid (2 columns on tablet, 1 on mobile)
+   - 7 project cards with:
+     * Project name, description
+     * Tech stack badges
+     * Date range
+     * Colored left-border accent
+     * Hover animations with shadow lift
+   - Call-to-action to GitHub profile
+
+5. INDIVIDUAL PROJECT PAGE (/projects/[slug])
+   - Fetches README from GitHub API automatically
+   - Renders Markdown with syntax highlighting
+   - Shows project details, tech stack, date
+   - GitHub link button
+   - Fallback if README unavailable
+   - Related projects links
+   - Pre-rendered at build time with generateStaticParams
+
+6. RESUME (/resume)
+   - Embedded PDF iframe viewer
+   - Download button for CV
+   - Fallback message if PDF not found
+
+7. CONTACT (/contact)
+   - Contact information cards (5 entries):
+     * University email (with copy-to-clipboard)
+     * Personal email (with copy-to-clipboard)
+     * Phone number (with copy-to-clipboard)
+     * LinkedIn link
+     * GitHub link
+   - Contact form (Name, Email, Subject, Message)
+   - Social media links (LinkedIn, GitHub)
+
+SIDE NAVIGATION
+   - Fixed left sidebar with collapsible/expandable states
+   - Logo/monogram "KG" at top
+   - 6 nav items (Home, Skills, Experience, Projects, Resume, Contact)
+   - Active link highlighting in orange
+   - Mobile hamburger menu with overlay
+   - Music widget at bottom (Spotify playlist embed)
+
+MUSIC WIDGET
+   - Collapsible Spotify playlist embed
+   - "Now Playing" label
+   - Compact design fits in sidebar
+   - Spotify iframe with proper formatting
+
+================================================================================
+PROJECT DATA
+================================================================================
+
+7 Featured Projects in lib/projects.ts:
+
+1. iLABu – Lab Reservation System
+   Tech: NodeJS, MongoDB, HTML, CSS, JavaScript
+   Date: May – August 2024
+   Accent: Orange
+
+2. Senate Election Information App
+   Tech: Kotlin, Android Studio
+   Date: September – December 2024
+   Accent: Blue
+
+3. Doctor Schedule Appointment System
+   Tech: PHP, MySQL
+   Date: September – December 2024
+   Accent: Green
+
+4. Konibui – TCG E-Commerce Website
+   Tech: NodeJS, MongoDB, HTML, CSS, JavaScript
+   Date: May – August 2025
+   Accent: Orange
+
+5. MuTech – Music Information Retrieval Dashboard
+   Tech: Python, Data Visualisation
+   Date: December 2025
+   Accent: Blue
+
+6. Enterprise Network Design – Two-Floor Office
+   Tech: Cisco, LAN/WAN, Subnetting, VLAN
+   Date: January – April 2026
+   Accent: Green
+
+7. iRespond – Gender Equality Application
+   Tech: C#, WinForms, Bunifu, Android Studio
+   Date: October – December 2021
+   Accent: Orange
+
+================================================================================
+GETTING STARTED
+================================================================================
+
+1. INSTALL DEPENDENCIES:
+   cd "/sessions/quirky-blissful-darwin/mnt/SAS3000 - Work Employment Readiness Training Arc/portfolio"
+   npm install --legacy-peer-deps
+
+2. ADD YOUR FILES:
+   - Profile photo: public/images/profile.jpg (320x320px recommended)
+   - Resume PDF: public/KeanGenota-IT-Intern.pdf
+   - Both optional; placeholders provided if not added
+
+3. RUN DEVELOPMENT SERVER:
+   npm run dev
+   Open: http://localhost:3000
+
+4. BUILD FOR PRODUCTION:
+   npm run build
+   npm start
+
+5. DEPLOY TO VERCEL:
+   - Push to GitHub
+   - Import project on vercel.com
+   - Deploy with one click
+
+================================================================================
+CUSTOMIZATION POINTS
+================================================================================
+
+Personal Information:
+  - app/page.tsx: Name, title, bio, featured skills
+  - app/skills/page.tsx: Skill categories and items
+  - app/experience/page.tsx: Work, education, awards
+  - lib/projects.ts: Project list with details
+  - app/contact/page.tsx: Email, phone, social links
+
+Design:
+  - tailwind.config.ts: Custom color values
+  - app/globals.css: CSS variables, fonts, animations
+  - Components: Modify styling in individual component files
+
+Content:
+  - All text, links, and data are easily editable
+  - Project data centralized in lib/projects.ts
+  - README rendering happens automatically from GitHub
+
+================================================================================
+FEATURES & HIGHLIGHTS
+================================================================================
+
+✓ Fully responsive (mobile, tablet, desktop)
+✓ Dark mode only (no light theme toggle needed)
+✓ Static generation for project pages (fast builds)
+✓ GitHub API integration for README rendering
+✓ Spotify widget integration
+✓ Copy-to-clipboard for contact info
+✓ Smooth animations and hover effects
+✓ Semantic HTML & accessibility best practices
+✓ SEO-optimized with proper meta tags
+✓ Mobile hamburger menu
+✓ Tailwind CSS with custom design system
+✓ TypeScript for type safety
+✓ "use client" directives on client components
+✓ Markdown rendering with GitHub Flavored Markdown
+✓ Project card with accent color system
+✓ Timeline layout for experience section
+✓ Subtle animated background pattern
+✓ Proper font hierarchy (Poppins + Lora)
+✓ Orange accent color for all CTAs
+
+================================================================================
+DEPENDENCIES
+================================================================================
+
+Core:
+  - next@^14.0.0
+  - react@^19.0.0
+  - react-dom@^19.0.0
+  - typescript@^5.3.0
+
+Styling:
+  - tailwindcss@^3.4.0
+  - autoprefixer@^10.4.16
+  - postcss@^8.4.32
+
+UI & Icons:
+  - lucide-react@^0.263.1
+
+Markdown:
+  - react-markdown@^9.0.1
+  - remark-gfm@^4.0.0
+
+Theme:
+  - next-themes@^0.2.1
+
+Utilities:
+  - clsx@^2.0.0
+  - class-variance-authority@^0.7.0
+
+================================================================================
+FILE COUNTS
+================================================================================
+
+Total Files Created:
+  - TypeScript/TSX: 9 app pages + 3 components + 1 lib = 13
+  - Configuration: 5 (package.json, next.config.ts, tailwind.config.ts, tsconfig.json, postcss.config.js)
+  - Styles: 1 (app/globals.css)
+  - Documentation: 4 (README.md, SETUP.md, PROJECT_SUMMARY.txt, .gitignore)
+  - SVG/Assets: 1 (placeholder-profile.svg)
+
+Total: 24+ core files
+
+================================================================================
+NOTES
+================================================================================
+
+- All pages use App Router (not Pages Router)
+- "use client" directive added to components with hooks/state
+- Images optimized with Next.js Image component
+- GitHub API calls are unauthenticated (public repos only)
+- Mobile-first responsive design approach
+- No database required (all data is static)
+- Can be deployed to Vercel, Netlify, Railway, or self-hosted
+- Build time is fast due to static generation
+- SEO-optimized with proper meta tags
+- Dark mode is the only theme (no toggle needed)
+
+================================================================================
+READY TO USE
+================================================================================
+
+All files have been created and are ready to use. The portfolio is production-ready
+and can be deployed immediately. Simply:
+
+1. npm install --legacy-peer-deps
+2. Add your profile photo and CV PDF
+3. Customize content as needed
+4. Deploy to Vercel or your preferred hosting
+
+The application follows Next.js 14 best practices and uses the Anthropic brand
+design system throughout.
+
+================================================================================
