@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
 import {
   Home,
   Code2,
@@ -27,6 +28,7 @@ export default function SideNav() {
   const pathname = usePathname();
   const [expanded, setExpanded] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   return (
     <>
@@ -55,8 +57,21 @@ export default function SideNav() {
         onMouseLeave={() => setExpanded(false)}
       >
         <div className="p-4 border-b border-border flex items-center justify-center">
-          <div className="w-12 h-12 bg-gradient-to-br from-accent-orange to-accent-blue rounded-full flex items-center justify-center font-poppins font-bold text-lg text-white">
-            KG
+          <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-accent-orange/40">
+            {!imgError ? (
+              <Image
+                src="/images/profile.jpg"
+                alt="Kean Genota"
+                fill
+                className="object-cover object-top"
+                onError={() => setImgError(true)}
+                priority
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-accent-orange to-accent-blue flex items-center justify-center font-poppins font-bold text-lg text-white">
+                KG
+              </div>
+            )}
           </div>
           {(expanded || mobileOpen) && (
             <span className="ml-3 font-poppins font-bold text-accent-orange hidden sm:inline">

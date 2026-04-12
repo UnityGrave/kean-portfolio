@@ -26,6 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="theme-color" content="#141413" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body className="bg-background text-foreground">
         <div className="flex">

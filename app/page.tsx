@@ -19,10 +19,12 @@ export default function Home() {
             </div>
 
             <p className="text-lg text-muted-foreground leading-relaxed font-lora">
-              Fourth-year BS Information Technology student at De La Salle
-              University. Certified CCNA, JLPT N5. Grand Prix Champion at the
-              2023 Busan Choral Festival. I build things at the intersection of
-              networks, design, and code.
+              A fourth-year BS Information Technology student at De La Salle
+              University. A budding developer optimizing creativity and team
+              capability to produce the right solutions. An advocate of music
+              and the arts, and gaming technology to further concept thinking
+              and programming techniques. Building things at the intersection
+              of networks, design, and code.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">

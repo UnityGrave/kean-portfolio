@@ -160,17 +160,29 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   li: ({ ...props }) => (
                     <li className="text-muted-foreground font-lora" {...props} />
                   ),
-                  code: ({ inline, ...props }) =>
+                  pre: ({ children, ...props }) => (
+                    <pre
+                      className="bg-[#0a0a0a] border border-border rounded-xl p-5 overflow-x-auto my-5 text-sm"
+                      {...props}
+                    >
+                      {children}
+                    </pre>
+                  ),
+                  code: ({ inline, className, children, ...props }: { inline?: boolean; className?: string; children?: React.ReactNode }) =>
                     inline ? (
                       <code
-                        className="bg-muted text-accent-orange px-2 py-1 rounded font-mono text-sm"
+                        className="bg-muted text-accent-orange px-1.5 py-0.5 rounded font-mono text-sm"
                         {...props}
-                      />
+                      >
+                        {children}
+                      </code>
                     ) : (
                       <code
-                        className="block bg-muted text-muted-foreground p-4 rounded-lg font-mono text-sm overflow-x-auto"
+                        className={`font-mono text-[#e5c07b] text-sm ${className ?? ""}`}
                         {...props}
-                      />
+                      >
+                        {children}
+                      </code>
                     ),
                   blockquote: ({ ...props }) => (
                     <blockquote
@@ -178,6 +190,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       {...props}
                     />
                   ),
+                  img: ({ src, alt }) => {
+                    const resolvedSrc = src?.startsWith("http")
+                      ? src
+                      : `https://raw.githubusercontent.com/${project.repo}/HEAD/${src?.replace(/^\.\//, "")}`;
+                    return (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={resolvedSrc}
+                        alt={alt ?? ""}
+                        className="max-w-full rounded-xl my-4 border border-border"
+                        loading="lazy"
+                      />
+                    );
+                  },
                   a: ({ ...props }) => (
                     <a
                       className="text-accent-orange hover:underline"
