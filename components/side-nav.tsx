@@ -41,17 +41,30 @@ export default function SideNav() {
         />
       )}
 
-      {/* Desktop hover trigger zone — always present, sits at left edge */}
+      {/* Desktop hover trigger zone */}
       <div
         className="hidden md:block fixed left-0 top-0 h-screen w-5 z-50"
         onMouseEnter={() => setHovered(true)}
       />
 
-      {/* Thin accent peek line when collapsed */}
+      {/* Tab handle — visible when sidebar is closed */}
       <div
-        className="hidden md:block fixed left-0 top-0 h-screen w-0.5 z-30 bg-accent-orange/50 transition-opacity duration-300"
-        style={{ opacity: hovered ? 0 : 1 }}
-      />
+        className="hidden md:flex fixed left-0 top-1/2 -translate-y-1/2 z-50 flex-col items-center"
+        style={{
+          opacity: hovered ? 0 : 1,
+          transform: `translateY(-50%) translateX(${hovered ? "-100%" : "0"})`,
+          transition: "opacity 200ms ease, transform 300ms cubic-bezier(0.4,0,0.2,1)",
+          pointerEvents: hovered ? "none" : "auto",
+        }}
+        onMouseEnter={() => setHovered(true)}
+      >
+        {/* Rounded pill tab */}
+        <div className="bg-card border border-border rounded-r-xl flex flex-col items-center justify-center gap-1.5 px-1.5 py-4 shadow-lg">
+          <div className="w-0.5 h-4 rounded-full bg-accent-orange/70" />
+          <div className="w-0.5 h-6 rounded-full bg-accent-orange" />
+          <div className="w-0.5 h-4 rounded-full bg-accent-orange/70" />
+        </div>
+      </div>
 
       {/* Sidebar — inline style handles transform so Tailwind doesn't conflict */}
       <aside
