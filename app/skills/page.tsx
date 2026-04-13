@@ -29,10 +29,7 @@ const skillCategories: SkillCategory[] = [
       "Python",
       "PHP",
       "TypeScript",
-      "Ruby",
-      "Prolog",
       "GDScript",
-      "x86-64 Assembly",
     ],
     accent: "blue",
   },
@@ -57,7 +54,7 @@ const skillCategories: SkillCategory[] = [
   },
   {
     title: "Game Development",
-    skills: ["Unity (VR/AR)", "GDScript", "C#"],
+    skills: ["Unity", "GDScript", "C#"],
     accent: "blue",
   },
   {
@@ -82,7 +79,7 @@ const skillCategories: SkillCategory[] = [
   },
   {
     title: "Graphic Design",
-    skills: ["Adobe Illustrator", "Canva", "Procreate", "Aseprite"],
+    skills: ["Adobe Illustrator", "Canva", "Aseprite"],
     accent: "orange",
   },
   {
@@ -92,7 +89,7 @@ const skillCategories: SkillCategory[] = [
   },
   {
     title: "DevOps & Hardware",
-    skills: ["Docker", "Arduino IDE", "ESP32", "GitHub Desktop"],
+    skills: ["Docker", "Arduino IDE", "ESP32", "GitHub"],
     accent: "green",
   },
   {
