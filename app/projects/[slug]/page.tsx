@@ -59,7 +59,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     );
   }
 
-  const readmeContent = await getReadmeContent(project.repo);
+  const readmeContent = project.repo
+    ? await getReadmeContent(project.repo)
+    : null;
 
   const accentColors = {
     orange: "text-accent-orange",
@@ -99,15 +101,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               ))}
             </div>
 
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-accent-orange text-white font-poppins font-semibold rounded-xl hover:bg-opacity-90 transition-all"
-            >
-              <Github size={20} />
-              View on GitHub
-            </a>
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-accent-orange text-white font-poppins font-semibold rounded-xl hover:bg-opacity-90 transition-all"
+              >
+                <Github size={20} />
+                View on GitHub
+              </a>
+            )}
           </div>
 
           <p className="text-muted-foreground text-sm mt-6">{project.date}</p>

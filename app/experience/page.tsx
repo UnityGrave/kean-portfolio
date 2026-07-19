@@ -14,13 +14,12 @@ export default function ExperiencePage() {
     {
       icon: <Briefcase className="text-accent-orange" />,
       title: "Web Development Intern",
-      subtitle: "Marvill Web Development Ltd.",
-      period: "March 2022 – August 2022",
+      subtitle: "Marvill Web Development",
+      period: "March – April 2022",
       details: [
-        "Customised WordPress websites according to client requirements and specifications",
-        "Optimised website performance and improved loading speeds",
-        "Developed and maintained website content and functionality",
-        "Applied front-end and back-end programming skills in real-world projects",
+        "Built and configured WordPress sites for client delivery, including plugin configuration and performance tuning",
+        "Completed 88 hours against an 80-hour career immersion requirement",
+        "Supervisor appraisal: \"Kean has been fantastic. He is always willing to do whatever needs to be done.\"",
       ],
     },
   ];
@@ -30,14 +29,18 @@ export default function ExperiencePage() {
       icon: <BookOpen className="text-accent-blue" />,
       title: "De La Salle University – Manila",
       subtitle: "BS Information Technology",
-      period: "September 2022 – Present",
+      period: "September 2022 – Expected June 2027",
+      details: [
+        "Minor: International Studies (Japanese Studies)",
+        "Coursework: WAN Connectivity · Advanced Routing & Switching · System Administration · Database Administration · Business Applications Development · Human-Computer Interaction · Internet of Things · IT Project Management",
+      ],
     },
     {
       icon: <BookOpen className="text-accent-green" />,
       title: "iACADEMY",
       subtitle:
         "Senior High School – Technical Vocational Track, Software Development Strand",
-      period: "September 2020 – June 2022",
+      period: "August 2020 – June 2022",
       details: ["Graduated with High Honours"],
     },
   ];
@@ -45,13 +48,18 @@ export default function ExperiencePage() {
   const certifications: TimelineItem[] = [
     {
       icon: <Award className="text-accent-orange" />,
-      title: "Cisco Certified Network Associate (CCNA 1 & 2)",
-      subtitle: "Cisco Networking Academy",
+      title: "CCNA: Switching, Routing, and Wireless Essentials",
+      subtitle: "Cisco Networking Academy · Issued April 2026",
+    },
+    {
+      icon: <Award className="text-accent-green" />,
+      title: "Lean Six Sigma White Belt",
+      subtitle: "Council for Six Sigma Certification · Issued March 2026",
     },
     {
       icon: <Award className="text-accent-blue" />,
-      title: "Japanese Language Proficiency Test (JLPT)",
-      subtitle: "N5 Level – Japan Foundation",
+      title: "JLPT N5 – Japanese Language Proficiency Test",
+      subtitle: "Japan Foundation · Taken July 2026, results pending",
     },
   ];
 
@@ -68,18 +76,28 @@ export default function ExperiencePage() {
     },
     {
       icon: <Trophy className="text-accent-blue" />,
+      title: "1st Place – Strain X",
+      subtitle: "iACADEMY Project-Based Learning, 2020",
+    },
+    {
+      icon: <Trophy className="text-accent-orange" />,
+      title: "1st Place – VaccInfo",
+      subtitle: "iACADEMY Project-Based Learning, 2021",
+    },
+    {
+      icon: <Trophy className="text-accent-green" />,
+      title: "1st Place – iRespond",
+      subtitle: "iACADEMY Project-Based Learning, 2021",
+    },
+    {
+      icon: <Trophy className="text-accent-blue" />,
       title: "Graduated with High Honours",
       subtitle: "iACADEMY Senior High School, Class of 2022",
     },
     {
       icon: <Trophy className="text-accent-orange" />,
-      title: "Project-based Learning Champion",
-      subtitle: "First Semester 2020, iACADEMY",
-    },
-    {
-      icon: <Trophy className="text-accent-green" />,
-      title: "Project-based Learning Best Work Award",
-      subtitle: "Second Semester 2021, iACADEMY",
+      title: "3rd Place (2016) · 4th Runner-Up (2018) – NAMCYA",
+      subtitle: "Musica Paulinos, St. Paul College of Makati",
     },
   ];
 

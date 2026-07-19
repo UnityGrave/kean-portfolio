@@ -14,17 +14,17 @@ export default function Home() {
                 <span className="text-accent-orange">L. Genota</span>
               </h1>
               <p className="text-xl text-accent-orange font-poppins font-semibold">
-                IT Intern · Networking · Web Development · Project Management
+                IT Intern · Networking · Systems · Cloud
               </p>
             </div>
 
             <p className="text-lg text-muted-foreground leading-relaxed font-lora">
-              A fourth-year BS Information Technology student at De La Salle
-              University. A budding developer optimizing creativity and team
-              capability to produce the right solutions. An advocate of music
-              and the arts, and gaming technology to further concept thinking
-              and programming techniques. Building things at the intersection
-              of networks, design, and code.
+              Fourth-year BS Information Technology student at De La Salle
+              University, focused on networking and infrastructure. Most
+              recently I helped design a three-site enterprise WAN, owning the
+              Manila site — and rebuilt its edge layer for fault tolerance
+              after a design review found a single point of failure. I&apos;m
+              now extending that foundation toward cloud infrastructure.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
@@ -48,19 +48,19 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
               <div>
                 <p className="text-2xl font-poppins font-bold text-accent-orange">
-                  7+
+                  12
                 </p>
                 <p className="text-sm text-muted-foreground">Projects</p>
               </div>
               <div>
                 <p className="text-2xl font-poppins font-bold text-accent-blue">
-                  15+
+                  20+
                 </p>
                 <p className="text-sm text-muted-foreground">Skills</p>
               </div>
               <div>
                 <p className="text-2xl font-poppins font-bold text-accent-green">
-                  3
+                  2
                 </p>
                 <p className="text-sm text-muted-foreground">Certifications</p>
               </div>
@@ -92,15 +92,15 @@ export default function Home() {
             {[
               {
                 title: "Networking",
-                items: ["TCP/IP", "CCNA 1&2", "LAN/WAN", "Cisco"],
+                items: ["Cisco IOS", "HSRP", "VLANs & Inter-VLAN Routing", "EtherChannel", "NAT/PAT & ACLs"],
               },
               {
-                title: "Web Development",
-                items: ["TypeScript", "Node.js", "React", "Next.js"],
+                title: "Cloud & Systems",
+                items: ["AWS", "Docker", "Linux", "Virtualization", "System Administration"],
               },
               {
-                title: "Full-Stack",
-                items: ["MongoDB", "MySQL", "PHP", "Database Design"],
+                title: "Development",
+                items: ["TypeScript", "Next.js", "Node.js", "Laravel", "MySQL"],
               },
             ].map((category) => (
               <div
