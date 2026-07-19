@@ -5,7 +5,7 @@ import SideNav from "@/components/side-nav";
 export const metadata: Metadata = {
   title: "Kean Angelo L. Genota - IT Intern & Developer",
   description:
-    "Fourth-year BS Information Technology student at De La Salle University. CCNA Certified, specializing in networking, web development, and project management.",
+    "Fourth-year BS Information Technology student at De La Salle University, focused on networking, systems and cloud infrastructure. Cisco Networking Academy CCNA: Switching, Routing and Wireless Essentials.",
   authors: [{ name: "Kean Angelo L. Genota" }],
   keywords: [
     "IT",
