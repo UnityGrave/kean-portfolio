@@ -10,97 +10,132 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Networking",
     skills: [
-      "TCP/IP",
-      "LAN/WAN",
-      "Cisco CCNA 1 & 2",
-      "Switching & Routing",
-      "Wireless Networking",
+      "Cisco IOS",
+      "Routing & Switching",
+      "VLANs & Inter-VLAN Routing",
+      "HSRP",
+      "EtherChannel (LACP)",
+      "Rapid PVST+",
+      "VLSM & Subnetting",
+      "NAT/PAT",
+      "ACLs",
+      "DHCP",
+      "IPsec VPN",
+      "Wireless (WLAN)",
+      "Cisco Packet Tracer",
     ],
     accent: "orange",
+  },
+  {
+    title: "Cloud & Infrastructure",
+    skills: [
+      "AWS",
+      "IAM",
+      "Lambda",
+      "S3",
+      "RDS",
+      "CloudFront",
+      "Docker",
+      "Nginx",
+      "CI/CD",
+    ],
+    accent: "blue",
+  },
+  {
+    title: "Systems Administration",
+    skills: [
+      "Linux (Ubuntu)",
+      "Windows Server",
+      "Virtualization (Proxmox)",
+      "Apache",
+      "Network Security",
+      "Switch Security",
+    ],
+    accent: "green",
   },
   {
     title: "Programming Languages",
     skills: [
+      "TypeScript",
+      "JavaScript",
+      "Python",
       "Java",
       "Kotlin",
+      "C#",
       "C",
       "C++",
-      "C#",
-      "Python",
       "PHP",
-      "TypeScript",
       "GDScript",
     ],
-    accent: "blue",
+    accent: "orange",
   },
   {
     title: "Web Development",
     skills: [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Laravel",
+      "Tailwind CSS",
       "HTML",
       "CSS",
-      "JavaScript",
-      "NodeJS",
       "WordPress",
-      "Laravel",
-      "NGINX",
-      "NPM",
     ],
-    accent: "green",
-  },
-  {
-    title: "Mobile Development",
-    skills: ["Android Studio", "Kotlin"],
-    accent: "orange",
-  },
-  {
-    title: "Game Development",
-    skills: ["Unity", "GDScript", "C#"],
     accent: "blue",
   },
   {
     title: "Database Management",
-    skills: ["MySQL", "MongoDB", "SQLite", "PostgreSQL"],
+    skills: [
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite",
+      "Database Design",
+      "Role-Based Access Control",
+    ],
     accent: "green",
   },
   {
-    title: "Data Analysis & Visualization",
-    skills: ["Python", "Tableau", "PowerBI"],
+    title: "Mobile & Embedded",
+    skills: [
+      "Android Studio",
+      "Kotlin",
+      "Firebase",
+      "ESP32",
+      "Arduino IDE",
+      "Sensors & Actuators",
+    ],
     accent: "orange",
   },
   {
-    title: "Software Development",
-    skills: ["Scrum", "Agile", "Lean Six Sigma", "PMBOK", "DSA"],
+    title: "Delivery & Process",
+    skills: [
+      "Agile",
+      "Scrum",
+      "Jira",
+      "Lean Six Sigma",
+      "PMBOK",
+      "Requirements Analysis",
+      "Quality Assurance",
+    ],
     accent: "blue",
   },
   {
-    title: "UI/UX Design",
-    skills: ["Figma", "UX Research & Testing"],
+    title: "Design & Research",
+    skills: [
+      "Figma",
+      "UX Research",
+      "Usability Testing",
+      "Prototyping",
+      "Aseprite",
+      "Canva",
+    ],
     accent: "green",
   },
   {
-    title: "Graphic Design",
-    skills: ["Adobe Illustrator", "Canva", "Aseprite"],
+    title: "Tools & Workflow",
+    skills: ["Git & GitHub", "Docker Compose", "Microsoft 365", "Google Workspace"],
     accent: "orange",
-  },
-  {
-    title: "Video Editing",
-    skills: ["Wondershare Filmora", "Adobe After Effects"],
-    accent: "blue",
-  },
-  {
-    title: "DevOps & Hardware",
-    skills: ["Docker", "Arduino IDE", "ESP32", "GitHub"],
-    accent: "green",
-  },
-  {
-    title: "API Documentation",
-    skills: ["Javadoc"],
-    accent: "orange",
-  },
-  {
-    title: "Office Productivity",
-    skills: ["Microsoft 365", "Google Suite"],
-    accent: "blue",
   },
 ];
 
@@ -118,7 +153,7 @@ export default function SkillsPage() {
           <div className="flex items-center gap-3 mb-4">
             <Sparkles className="text-accent-orange" size={32} />
             <h1 className="text-4xl md:text-5xl font-poppins font-bold text-foreground">
-              Skills & Expertise
+              Skills &amp; Expertise
             </h1>
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl font-lora">
@@ -152,30 +187,44 @@ export default function SkillsPage() {
 
         <section className="mt-16 pt-16 border-t border-border">
           <h2 className="text-2xl font-poppins font-bold text-foreground mb-6">
-            <span className="text-accent-orange">Certifications</span> & Credentials
+            <span className="text-accent-orange">Certifications</span> &amp; Credentials
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-card border border-border rounded-xl p-6 border-l-4 border-l-accent-blue">
               <h3 className="font-poppins font-bold text-foreground mb-2">
-                CCNA Certification
+                CCNA: Switching, Routing, and Wireless Essentials
               </h3>
               <p className="text-muted-foreground text-sm mb-2">
-                Cisco Certified Network Associate
+                Cisco Networking Academy · Issued April 2026
               </p>
               <p className="text-xs text-muted-foreground">
-                Covers networking fundamentals, routing & switching, and
-                enterprise networking.
+                Course completion covering VLANs and inter-VLAN routing, Spanning
+                Tree Protocol, EtherChannel, first-hop redundancy (HSRP), DHCP,
+                wireless LANs and switch security.
               </p>
             </div>
             <div className="bg-card border border-border rounded-xl p-6 border-l-4 border-l-accent-green">
               <h3 className="font-poppins font-bold text-foreground mb-2">
+                Lean Six Sigma White Belt
+              </h3>
+              <p className="text-muted-foreground text-sm mb-2">
+                Council for Six Sigma Certification · Issued March 2026
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Lean and Six Sigma fundamentals — DMAIC, waste reduction and
+                process-improvement practice.
+              </p>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-6 border-l-4 border-l-accent-orange">
+              <h3 className="font-poppins font-bold text-foreground mb-2">
                 JLPT N5
               </h3>
               <p className="text-muted-foreground text-sm mb-2">
-                Japanese Language Proficiency Test
+                Japan Foundation · Taken July 2026, results pending
               </p>
               <p className="text-xs text-muted-foreground">
-                Demonstrates foundational Japanese language competency.
+                Foundational Japanese language proficiency. Studying toward N4
+                (December 2026).
               </p>
             </div>
           </div>
