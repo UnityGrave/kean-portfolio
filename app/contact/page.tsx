@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, Linkedin, Github, Copy, Check } from "lucide-react";
+import { useForm, ValidationError } from "@formspree/react";
+import { Mail, Phone, Linkedin, Github, Copy, Check, Loader2 } from "lucide-react";
 
 interface ContactInfo {
   icon: React.ReactNode;
@@ -11,22 +12,19 @@ interface ContactInfo {
   isCopyable?: boolean;
 }
 
+const CONTACT_EMAIL = "keanangelo.genota@gmail.com";
+const FORMSPREE_FORM_ID = "mojgdggb";
+
 export default function ContactPage() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [state, handleSubmit, reset] = useForm(FORMSPREE_FORM_ID);
 
   const contactInfo: ContactInfo[] = [
     {
       icon: <Mail className="text-accent-orange" size={24} />,
-      label: "University Email",
-      value: "kean_genota@dlsu.edu.ph",
-      href: "mailto:kean_genota@dlsu.edu.ph",
-      isCopyable: true,
-    },
-    {
-      icon: <Mail className="text-accent-blue" size={24} />,
-      label: "Personal Email",
-      value: "keangenota999@gmail.com",
-      href: "mailto:keangenota999@gmail.com",
+      label: "Email",
+      value: CONTACT_EMAIL,
+      href: `mailto:${CONTACT_EMAIL}`,
       isCopyable: true,
     },
     {
@@ -64,7 +62,7 @@ export default function ContactPage() {
             Get in <span className="text-accent-orange">Touch</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl font-lora">
-            Feel free to reach out! I'm always open to discussing new projects,
+            Feel free to reach out! I&apos;m always open to discussing new projects,
             opportunities, or collaborations.
           </p>
         </div>
@@ -118,89 +116,159 @@ export default function ContactPage() {
           </h2>
 
           <div className="bg-card border border-border rounded-xl p-8">
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {state.succeeded ? (
+              <div className="text-center py-8">
+                <div className="w-14 h-14 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Check size={28} className="text-accent-green" />
+                </div>
+                <h3 className="text-xl font-poppins font-bold text-foreground mb-2">
+                  Message sent
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  Thanks for reaching out — I&apos;ll get back to you soon.
+                </p>
+                <button
+                  onClick={reset}
+                  className="mt-6 text-sm text-accent-orange font-poppins font-semibold hover:underline"
+                >
+                  Send another message
+                </button>
+              </div>
+            ) : (
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                {/* Honeypot — hidden from humans, discarded by Formspree if filled */}
+                <input
+                  type="text"
+                  name="_gotcha"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-poppins font-semibold text-foreground mb-2"
+                    >
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      className="w-full px-4 py-2 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent-orange transition-colors"
+                      placeholder="Your name"
+                    />
+                    <ValidationError
+                      prefix="Name"
+                      field="name"
+                      errors={state.errors}
+                      className="text-xs text-red-500 mt-1"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-poppins font-semibold text-foreground mb-2"
+                    >
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-2 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent-orange transition-colors"
+                      placeholder="your@email.com"
+                    />
+                    <ValidationError
+                      prefix="Email"
+                      field="email"
+                      errors={state.errors}
+                      className="text-xs text-red-500 mt-1"
+                    />
+                  </div>
+                </div>
+
                 <div>
                   <label
-                    htmlFor="name"
+                    htmlFor="subject"
                     className="block text-sm font-poppins font-semibold text-foreground mb-2"
                   >
-                    Full Name
+                    Subject
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
+                    id="subject"
+                    name="subject"
                     className="w-full px-4 py-2 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent-orange transition-colors"
-                    placeholder="Your name"
+                    placeholder="What's this about?"
+                  />
+                  <ValidationError
+                    prefix="Subject"
+                    field="subject"
+                    errors={state.errors}
+                    className="text-xs text-red-500 mt-1"
                   />
                 </div>
+
                 <div>
                   <label
-                    htmlFor="email"
+                    htmlFor="message"
                     className="block text-sm font-poppins font-semibold text-foreground mb-2"
                   >
-                    Email Address
+                    Message
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full px-4 py-2 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent-orange transition-colors"
-                    placeholder="your@email.com"
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    required
+                    className="w-full px-4 py-2 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent-orange transition-colors resize-none"
+                    placeholder="Your message..."
+                  />
+                  <ValidationError
+                    prefix="Message"
+                    field="message"
+                    errors={state.errors}
+                    className="text-xs text-red-500 mt-1"
                   />
                 </div>
-              </div>
 
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-poppins font-semibold text-foreground mb-2"
+                <button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="w-full px-6 py-3 bg-accent-orange text-white font-poppins font-semibold rounded-lg transition-all hover:bg-opacity-90 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-opacity-100 flex items-center justify-center gap-2"
                 >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  className="w-full px-4 py-2 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent-orange transition-colors"
-                  placeholder="What's this about?"
+                  {state.submitting ? (
+                    <>
+                      <Loader2 size={18} className="animate-spin" />
+                      Sending…
+                    </>
+                  ) : (
+                    "Send Message"
+                  )}
+                </button>
+
+                <ValidationError
+                  errors={state.errors}
+                  className="text-sm text-center text-red-500"
                 />
-              </div>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-poppins font-semibold text-foreground mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  className="w-full px-4 py-2 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent-orange transition-colors resize-none"
-                  placeholder="Your message..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full px-6 py-3 bg-accent-orange text-white font-poppins font-semibold rounded-lg hover:bg-opacity-90 transition-all"
-              >
-                Send Message
-              </button>
-              <p className="text-xs text-muted-foreground text-center">
-                Note: This form will generate a mailto link. You can also email me
-                directly at{" "}
-                <a
-                  href="mailto:kean_genota@dlsu.edu.ph"
-                  className="text-accent-orange hover:underline"
-                >
-                  kean_genota@dlsu.edu.ph
-                </a>
-              </p>
-            </form>
+                <p className="text-xs text-muted-foreground text-center">
+                  Prefer to write it yourself? Email me directly at{" "}
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="text-accent-orange hover:underline"
+                  >
+                    {CONTACT_EMAIL}
+                  </a>
+                </p>
+              </form>
+            )}
           </div>
         </section>
 
